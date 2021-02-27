@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 
 const app = express();
+const PORT = process.env.PORT || 80;
 
 app.use(cors());
 
@@ -16,4 +17,6 @@ app.get('/', (req, res) => {
 
 app.use('/discord', require('./routes/discord'));
 
-app.listen(8080);
+app.listen(PORT, () => {
+    console.log(`App has been started on port ${PORT}...`)
+});
