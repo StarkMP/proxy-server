@@ -2,11 +2,11 @@ const { Router } = require('express');
 const router = Router();
 const fetch = require('node-fetch');
 
-router.post('/webhook/:id/:token', async (req, res) => {
+router.post('/webhook/:id/:token', (req, res) => {
     try {
         const { id, token } = req.params;
 
-        await fetch(`https://discord.com/api/webhooks/${id}/${token}`, {
+        fetch(`https://discord.com/api/webhooks/${id}/${token}`, {
             method: 'POST',
             body: JSON.stringify(req.body || {}),
             headers: { 'Content-Type': 'application/json' }
